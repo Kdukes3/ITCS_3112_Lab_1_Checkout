@@ -2,8 +2,10 @@ namespace ITCS_3112_Lab_1_Checkout;
 
 public class Catalog : ICatalog
 {
+    
     public List<Item> ListAvailable()
     {
+        
         throw new NotImplementedException();
     }
 

@@ -7,6 +7,10 @@ public class DefaultCheckoutService : ICheckoutService
         throw new NotImplementedException();
     }
 
+    public Catalog GetCatalog()
+    {
+        throw new NotImplementedException();
+    }
     public Receipt Checkout(string itemId, Borrower borrower, DateTime dueDate)
     {
         throw new NotImplementedException();

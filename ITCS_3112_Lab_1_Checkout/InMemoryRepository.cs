@@ -2,8 +2,9 @@ namespace ITCS_3112_Lab_1_Checkout;
 
 public class InMemoryRepository : IRepository
 {
-    //Inventory for all items
+    //Dictionary for Item inventory and Lists for items and records
     private Dictionary<string, Item> _inventory = new Dictionary<string, Item>();
+    private List<CheckoutRecord> _records = new List<CheckoutRecord>();
     List<Item> _items = new List<Item>();
 
     public void SaveItem(Item item)
@@ -19,21 +20,31 @@ public class InMemoryRepository : IRepository
 
     public List<Item> AllItems()
     {
+        foreach (var item in _inventory.Values)
+        {
+            _items.Add(item);
+        }
         
+        return _items;
     }
 
     public void SaveRecord(CheckoutRecord record)
     {
-        throw new NotImplementedException();
+        _records.Add(record);
     }
 
     public CheckoutRecord GetActiveRecordFor(string itemId)
     {
-        throw new NotImplementedException();
+        if (_records.Exists(r => r.ItemId == itemId))
+        {
+            return _records.First(r => r.ItemId == itemId);
+        }
+        
+        return null;
     }
 
     public List<CheckoutRecord> AllRecords()
     {
-        throw new NotImplementedException();
+        return _records;
     }
 }
